@@ -18,117 +18,131 @@ incrementado.
 
 Diseñar una clase que calcule el monto del incremento y el total a pagar por el
 socio.
+
 */
 
 
-class Calcular_Incremento{
+class Calcular_IncrementoMonto{
 
     private int años;
-    
-    private double 
-    Casino,
-    Canchas,
-    Restaurante,
-    Piscinas;
+    private double Casino,Hospedaje , Canchas, Restaurante, Piscinas;
     
     
-    
-
-
-    public Calcular_Incremento(){
-        años = 0;
-        pagoMensual = 0;
-    }
-
-
     public static void main(String[] args){
-
-        Calcular_Incremento persona1 = new Calcular_Incremento();
-
+        Calcular_IncrementoMonto socio1 = new Calcular_IncrementoMonto();
+        socio1.setAños(20);
+        socio1.setCasino(1001);
+        socio1.setHospedaje(2000);
+        socio1.setCanchas(1500);
+        socio1.setRestaurante(3000);
+        socio1.setPiscinas(35000);
+        socio1.mostrar();
     }
 
-
-    public float calcularDescuento(){
-        float  descuento = 0;
-        
-        if(getEdad() >= 40){
-            descuento = 15.8;
-    
-        }   else if(getEdad() > 25 && getEdad() < 40 ){
-                descuento =  12.5;
-        }   else if(getEdad() >= 15 && getEdad() <= 24 ){
-                descuento = 8.5;
-        }   
-        return descuento;
-    
+    // contructor
+    public Calcular_IncrementoMonto(){
+        Casino = 0;
+        Hospedaje = 0;
+        Canchas = 0;
+        Restaurante = 0;
+        Piscinas = 0;
     }
 
+    // metodo que calcula el incremeto
+    public double totalIncremento(){
+        return 
+            getCasino()      + (getCasino()      *  8.3 / 100) 
+           +getHospedaje()   + (getHospedaje()   * 15.5 / 100) 
+           +getCanchas()     + (getCanchas()     *  5.4 / 100)
+           +getRestaurante() + (getRestaurante() * 13.8 / 100) 
+           +getPiscinas()    + (getPiscinas()    *  6.8 / 100);
+    }
+
+    // metodo de total a pagar
     public double totalPagar(){
-        return ;
+        double total;
 
+        if(getAños() >= 40 ){
+            total = totalIncremento() * 15.8 / 100;
+        
+        }   else if(getAños() >= 25 && getAños() < 40){
+                total = totalIncremento() - (totalIncremento() * 12.5 / 100);
+        
+        }   else if (getAños() >= 15 && getAños() <= 24 ){
+                total = totalIncremento() - totalIncremento() * 8.5;
+        }   else{
+                total = totalIncremento() - totalIncremento();
+        }
+        return total;
     }
 
-    public void setAños(int años){
-        años = años;
+
+    public void mostrar(){
+        System.out.println("El incremento total es -> " + totalIncremento());
+        System.out.println("El total a pagar por el socio es -> " + totalPagar());
     }
 
-    public int getAños(){
-        return   años;
+    // metodotodos setter y getters
+
+    public int getAños() {
+        return años;
     }
 
-    public void setPagoMes(double pago){
-        pagoMensual = pago;
-    }
-    public double getPagoMes(){
-        return pagoMensual;
+
+    public void setAños(int años) {
+        this.años = años;
     }
 
-    public double getCasino(){
+
+    public double getCasino() {
         return Casino;
-    }     
+    }
 
-    public void setCasino(double casino){
+
+    public void setCasino(double casino) {
         Casino = casino;
     }
-    
 
 
-    public double setHospedaje(){
+    public double getHospedaje() {
         return Hospedaje;
-
     }
-    public void setHospedaje(double hospedaje){
+
+
+    public void setHospedaje(double hospedaje) {
         Hospedaje = hospedaje;
-
-    }
-    
-    public double getHospedaje(){
-        return Hospedaje;
-    }
-    
-
-    public void setRestaurante(double restaurante){
-        Restaurante = restaurante;
     }
 
-    public double getRestaurante(){
-        return Restaurante;
-    }
 
-    public void setCanchas(double canchas){
-        Canchas = canchas;
-    }        
-
-    public canchas getCanchas(){
+    public double getCanchas() {
         return Canchas;
     }
 
-    public void setPicinas(double piscinas){
-        Piscinas = piscinas;
+
+    public void setCanchas(double canchas) {
+        Canchas = canchas;
     }
-    public double getPiscinas(){
+
+
+    public double getRestaurante() {
+        return Restaurante;
+    }
+
+
+    public void setRestaurante(double restaurante) {
+        Restaurante = restaurante;
+    }
+
+
+    public double getPiscinas() {
         return Piscinas;
     }
+
+
+    public void setPiscinas(double piscinas) {
+        Piscinas = piscinas;
+    }
+
 
 }
  
