@@ -118,40 +118,22 @@ class Calcular_IncrementoMonto {
         double incremento;
 
         if(getTipo() == 1){
-                incremento = increntoCasino() ;
+                incremento = getCasino() + (getCasino() * 8.3 / 100);
         }   else if(getTipo() == 2){
-                incremento = incrementoHospedaje();
+                incremento = getHospedaje() + (getHospedaje() * 15.5 / 100);
         }   else if(getTipo() == 3){
-                incremento =  incrementoCanchas();
+                incremento =  getCanchas() + (getCanchas() * 5.4 / 100);
         }   else if(getTipo() == 4){    
-                incremento = incrementoRestaurante();
+                incremento = getCanchas()+ (getRestaurante() * 13.8 / 100);
         }   else if (getTipo() == 5){
-                incremento = incrementoPicinas();
+                incremento =  getCanchas() +(getPiscinas() * 6.8 / 100);
         }   else{
             incremento = 0;
         }
         return incremento;
     }
 
-    public double increntoCasino() {
-        return getCasino() + (getCasino() * 8.3 / 100);
-    }
-
-    public double incrementoHospedaje() {
-        return getHospedaje() + (getHospedaje() * 15.5 / 100);
-    }
-
-    public double incrementoCanchas() {
-        return getCanchas() + (getCanchas() * 5.4 / 100);
-    }
-
-    public double incrementoRestaurante() {
-        return getRestaurante() + (getRestaurante() * 13.8 / 100);
-    }
-
-    public double incrementoPicinas() {
-        return getPiscinas() + (getPiscinas() * 6.8 / 100);
-    }
+  
 
     // metodo de total a pagar
     public double totalPagar() {
@@ -166,9 +148,9 @@ class Calcular_IncrementoMonto {
         } else if (getAños() >= 15 && getAños() <= 24) {
             total = totalIncremento() - totalIncremento() * 8.5;
         } else {
-            total = totalIncremento() - totalIncremento();
+            total = totalIncremento() ;
         }
-        return total;
+        return total ;
     }
 
     public void mostrar() {
