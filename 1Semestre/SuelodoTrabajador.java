@@ -118,7 +118,7 @@ public class SuelodoTrabajador {
         }   else if(getNumeroHijos() == 4 || getNumeroHijos() == 5){
                 bonificación = 43.700 * getNumeroHijos();
         
-        }   else if (getNumeroHijos() >0 && getNumeroHijos() <= 3){
+        }   else if (getNumeroHijos() >= 1 && getNumeroHijos() <= 3){
                 bonificación = 31.200 * getNumeroHijos();
         
         }   else{
