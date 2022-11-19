@@ -28,42 +28,74 @@ class Calcular_IncrementoMonto {
 
     private int años;
     private double Casino, Hospedaje, Canchas, Restaurante, Piscinas;
+    private int tipoServicio;
 
-    public static void main(String[] args){
+    public static void main(String[] args) {
 
         Scanner input = new Scanner(System.in);
         int valor;
+        int tipo;
 
         Calcular_IncrementoMonto socio1 = new Calcular_IncrementoMonto();
-        
-        try{
 
-        System.out.print("Ingrese la cantidad de años -> ");
-        valor = input.nextInt();
-        socio1.setAños(valor);
+        try {
 
-        System.out.print("Ingrese la cantidad de Casino -> ");
-        valor = input.nextInt();
-        socio1.setCasino(valor);
+            System.out.print("Ingrese la cantidad de años -> ");
+            valor = input.nextInt();
+            socio1.setAños(valor);
 
-        System.out.print("Ingrese la cantidad de Hospedaje -> ");
-        valor = input.nextInt();
-        socio1.setHospedaje(valor);
+            System.out.print(""
+                    + "1 Casino \n"
+                    + "2 Hospedaje\n"
+                    + "3 Canchas\n"
+                    + "4 restaurante\n"
+                    + "5 picina\n"
 
-        System.out.print("Ingrese la cantidad de Cancha -> ");
-        valor = input.nextInt();
-        socio1.setCanchas(valor);
+                    + "Ingrese el servicio -> ");
+            valor = input.nextInt();
 
-        System.out.print("Ingrese la cantidad de Restaurante -> ");
-        valor = input.nextInt();
-        socio1.setRestaurante(valor);
+            switch (valor) {
+                case 1:
+                    System.out.print("Ingrese la cantidad de Casino -> ");
+                        valor = input.nextInt();
+                        socio1.setCasino(valor);
+                        socio1.setTipo(1);
+                    break;
+                case 2:
+                    System.out.print("Ingrese la cantidad de Hospedaje -> ");
+                    valor = input.nextInt();
+                    socio1.setHospedaje(valor);
+                    socio1.setTipo(2);
 
-        System.out.print("Ingrese la cantidad de Picina -> ");
-        valor = input.nextInt();
-        socio1.setPiscinas(valor);
-        socio1.mostrar();
-        
-        }  catch (Exception e) {
+                    break;
+                case 3:
+
+                    System.out.print("Ingrese la cantidad de Cancha -> ");
+                    valor = input.nextInt();
+                    socio1.setCanchas(valor);
+                    socio1.setTipo(3);
+
+                    break;
+                case 4:
+
+                    System.out.print("Ingrese la cantidad de Restaurante -> ");
+                    valor = input.nextInt();
+                    socio1.setRestaurante(valor);
+                    socio1.setTipo(4);
+                    break;
+                case 5:
+                    System.out.print("Ingrese la cantidad de Picina -> ");
+                    valor = input.nextInt();
+                    socio1.setPiscinas(valor);
+                    socio1.setTipo(5);
+                    break;
+                default:
+                    break;
+            }
+
+            socio1.mostrar();
+
+        } catch (Exception e) {
             System.out.println("Error de tipo de dato");
         }
     }
@@ -75,15 +107,50 @@ class Calcular_IncrementoMonto {
         Canchas = 0;
         Restaurante = 0;
         Piscinas = 0;
+        tipoServicio = 0;
+        
+
     }
 
-    // metodo que calcula el incremeto
+    // metodo que calcula el incremeto el cual lo hace para todo los servicios
     public double totalIncremento() {
-        return getCasino() + (getCasino() * 8.3 / 100)
-                + getHospedaje() + (getHospedaje() * 15.5 / 100)
-                + getCanchas() + (getCanchas() * 5.4 / 100)
-                + getRestaurante() + (getRestaurante() * 13.8 / 100)
-                + getPiscinas() + (getPiscinas() * 6.8 / 100);
+
+        double incremento;
+
+        if(getTipo() == 1){
+                incremento = increntoCasino() ;
+        }   else if(getTipo() == 2){
+                incremento = incrementoHospedaje();
+        }   else if(getTipo() == 3){
+                incremento =  incrementoCanchas();
+        }   else if(getTipo() == 4){    
+                incremento = incrementoRestaurante();
+        }   else if (getTipo() == 5){
+                incremento = incrementoPicinas();
+        }   else{
+            incremento = 0;
+        }
+        return incremento;
+    }
+
+    public double increntoCasino() {
+        return getCasino() + (getCasino() * 8.3 / 100);
+    }
+
+    public double incrementoHospedaje() {
+        return getHospedaje() + (getHospedaje() * 15.5 / 100);
+    }
+
+    public double incrementoCanchas() {
+        return getCanchas() + (getCanchas() * 5.4 / 100);
+    }
+
+    public double incrementoRestaurante() {
+        return getRestaurante() + (getRestaurante() * 13.8 / 100);
+    }
+
+    public double incrementoPicinas() {
+        return getPiscinas() + (getPiscinas() * 6.8 / 100);
     }
 
     // metodo de total a pagar
@@ -91,7 +158,7 @@ class Calcular_IncrementoMonto {
         double total;
 
         if (getAños() >= 40) {
-            total = totalIncremento() * 15.8 / 100;
+            total = totalIncremento() - (totalIncremento() * 15.8 / 100);
 
         } else if (getAños() >= 25 && getAños() < 40) {
             total = totalIncremento() - (totalIncremento() * 12.5 / 100);
@@ -105,8 +172,8 @@ class Calcular_IncrementoMonto {
     }
 
     public void mostrar() {
-        System.out.println("El incremento total es -> " + totalIncremento());
-        System.out.println("El total a pagar por el socio es -> " + totalPagar());
+        System.out.println("El incremento total es -> " + totalIncremento()+"$");
+        System.out.println("El total a pagar por el socio es -> " + totalPagar()+"$");
     }
 
     // metodos setter y getters
@@ -159,4 +226,11 @@ class Calcular_IncrementoMonto {
         Piscinas = piscinas;
     }
 
+    public int  getTipo() {
+        return tipoServicio;
+    }
+
+    public void setTipo(int tipo) {
+        tipoServicio = tipo;
+    }
 }
