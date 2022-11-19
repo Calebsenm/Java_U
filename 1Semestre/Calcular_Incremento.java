@@ -39,7 +39,7 @@ class Calcular_IncrementoMonto{
         socio1.mostrar();
     }
 
-    // contructor
+    // constructor
     public Calcular_IncrementoMonto(){
         Casino = 0;
         Hospedaje = 0;
@@ -82,7 +82,7 @@ class Calcular_IncrementoMonto{
         System.out.println("El total a pagar por el socio es -> " + totalPagar());
     }
 
-    // metodotodos setter y getters
+    // metodos setter y getters
 
     public int getAños() {
         return años;
