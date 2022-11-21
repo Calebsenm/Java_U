@@ -146,7 +146,7 @@ class Calcular_IncrementoMonto {
             total = totalIncremento() - (totalIncremento() * 12.5 / 100);
 
         } else if (getAños() >= 15 && getAños() <= 24) {
-            total = totalIncremento() - totalIncremento() * 8.5;
+            total = totalIncremento() - (totalIncremento() * 8.5/100);
         } else {
             total = totalIncremento() ;
         }
