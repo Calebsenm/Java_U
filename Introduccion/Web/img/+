@@ -1,0 +1,22 @@
+
+
+<html>
+
+    <head>
+        <title> My Pagina Web</title>
+        <style>
+            
+        h1{
+            background-color = black;
+        }
+            
+        </style>
+    </head>
+
+    <body background ="img/arbol.jpg" > 
+        <main>
+            <h1 > Bonsai </h1>
+
+        </main>
+    </body>
+</html>
